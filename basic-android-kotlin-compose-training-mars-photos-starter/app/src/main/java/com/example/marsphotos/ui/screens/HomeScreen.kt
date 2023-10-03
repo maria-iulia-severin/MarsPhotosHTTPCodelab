@@ -46,10 +46,7 @@ fun HomeScreen(
 ) {
     when (marsUiState) {
         is MarsUiState.Loading -> LoadingScreen(modifier = modifier.fillMaxSize())
-        is MarsUiState.Success -> ResultScreen(
-            marsUiState.photos, modifier = modifier.fillMaxWidth()
-        )
-
+        is MarsUiState.Success -> MarsPhotoCard(photo = marsUiState.photos, modifier = modifier)
         is MarsUiState.Error -> ErrorScreen( modifier = modifier.fillMaxSize())
     }
 }
@@ -97,6 +94,19 @@ fun ErrorScreen(modifier: Modifier = Modifier) {
         )
         Text(text = stringResource(R.string.loading_failed), modifier = Modifier.padding(16.dp))
     }
+}
+
+@Composable
+fun MarsPhotoCard(photo: MarsPhoto, modifier: Modifier = Modifier) {
+    AsyncImage(
+        model = ImageRequest.Builder(context = LocalContext.current)
+            .data(photo.imgSrc)
+            .crossfade(true)
+            .build(),
+        contentDescription = stringResource(R.string.mars_photo),
+        contentScale = ContentScale.Crop,
+        modifier = Modifier.fillMaxWidth()
+    )
 }
 
 //@Preview(showBackground = true)
