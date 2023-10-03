@@ -17,7 +17,6 @@ package com.example.marsphotos.ui.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.aspectRatio
@@ -43,16 +42,35 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.marsphotos.R
 import com.example.marsphotos.network.MarsPhoto
+import com.example.marsphotos.network.TayAlbum
 
 @Composable
 fun HomeScreen(
-    marsUiState: MarsUiState,
+    // marsUiState: MarsUiState,
+    tayUiState: TayUiState,
     modifier: Modifier = Modifier
 ) {
-    when (marsUiState) {
-        is MarsUiState.Loading -> LoadingScreen(modifier = modifier.fillMaxSize())
-        is MarsUiState.Success -> PhotosGridScreen(marsUiState.photos, modifier)
-        is MarsUiState.Error -> ErrorScreen(modifier = modifier.fillMaxSize())
+    when (tayUiState) {
+        is TayUiState.Loading -> LoadingScreen(modifier = modifier.fillMaxSize())
+        is TayUiState.Success -> TayAlbumShow(tayUiState.albums, modifier)
+        is TayUiState.Error -> ErrorScreen(modifier = modifier.fillMaxSize())
+
+    }
+//    when (marsUiState) {
+//        is MarsUiState.Loading -> LoadingScreen(modifier = modifier.fillMaxSize())
+//        is MarsUiState.Success -> PhotosGridScreen(marsUiState.photos, modifier)
+//        is MarsUiState.Error -> ErrorScreen(modifier = modifier.fillMaxSize())
+//    }
+}
+
+@Composable
+fun TayAlbumShow(album: TayAlbum, modifier: Modifier = Modifier) {
+    Card(
+        modifier = modifier,
+        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
+    ) {
+        Text(text = album.title)
+
     }
 }
 

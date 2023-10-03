@@ -36,6 +36,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.marsphotos.R
 import com.example.marsphotos.ui.screens.HomeScreen
 import com.example.marsphotos.ui.screens.MarsViewModel
+import com.example.marsphotos.ui.screens.TayViewModel
 
 @Composable
 fun MarsPhotosApp() {
@@ -50,8 +51,11 @@ fun MarsPhotosApp() {
                 .padding(it)
         ) {
             val marsViewModel: MarsViewModel = viewModel()
+            val tayViewModel: TayViewModel = viewModel()
             HomeScreen(
-                marsUiState = marsViewModel.marsUiState)
+               // marsUiState = marsViewModel.marsUiState)
+                tayUiState = tayViewModel.tayUiState)
+
         }
     }
 }
