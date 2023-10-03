@@ -33,7 +33,10 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import com.example.marsphotos.network.MarsPhoto
 
 @Composable
@@ -60,8 +63,15 @@ fun ResultScreen(photos: String, modifier: Modifier = Modifier) {
         contentAlignment = Alignment.Center,
         modifier = modifier
     ) {
-        //AsyncImage(model = photos, contentDescription = null )
-
+       // AsyncImage(model = photos, contentDescription = null )
+        AsyncImage(
+            model = ImageRequest.Builder(context = LocalContext.current)
+                .data(photos)
+                .crossfade(true)
+                .build(),
+            contentDescription = stringResource(R.string.mars_photo),
+            modifier = Modifier.fillMaxWidth()
+        )
         Text(text = photos)
     }
 }
