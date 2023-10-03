@@ -33,6 +33,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import coil.compose.AsyncImage
+import com.example.marsphotos.network.MarsPhoto
 
 @Composable
 fun HomeScreen(
@@ -58,6 +60,8 @@ fun ResultScreen(photos: String, modifier: Modifier = Modifier) {
         contentAlignment = Alignment.Center,
         modifier = modifier
     ) {
+        //AsyncImage(model = photos, contentDescription = null )
+
         Text(text = photos)
     }
 }
@@ -85,10 +89,10 @@ fun ErrorScreen(modifier: Modifier = Modifier) {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun ResultScreenPreview() {
-    MarsPhotosTheme {
-        ResultScreen(stringResource(R.string.placeholder_result))
-    }
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun ResultScreenPreview() {
+//    MarsPhotosTheme {
+//        ResultScreen(stringResource(R.string.placeholder_result))
+//    }
+//}
