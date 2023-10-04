@@ -21,6 +21,7 @@ private val retrofit_tay = Retrofit.Builder()
     .baseUrl(BASE_URL_TAY)
     .build()
 
+//------------------------------------------- altceva
 interface TayApiService {
     @GET("albums")
     suspend fun getAlbums(): List<TayAlbum>

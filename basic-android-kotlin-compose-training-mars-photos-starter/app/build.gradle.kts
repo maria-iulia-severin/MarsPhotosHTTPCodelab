@@ -68,6 +68,8 @@ android {
 }
 
 dependencies {
+    // Koin for Android
+    implementation("io.insert-koin:koin-androidx-compose:3.5.0")
     implementation("io.coil-kt:coil-compose:2.4.0")
     // Kotlin serialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")

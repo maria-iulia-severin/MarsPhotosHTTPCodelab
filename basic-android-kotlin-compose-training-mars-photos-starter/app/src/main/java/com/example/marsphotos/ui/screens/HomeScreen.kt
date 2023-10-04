@@ -111,10 +111,7 @@ fun MarsPhotoCard(photo: MarsPhoto, modifier: Modifier = Modifier) {
             contentDescription = stringResource(R.string.mars_photo),
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxWidth()
-        )
-    }
-}
-
+        ) } }
 @Composable
 fun PhotosGridScreen(photos: List<MarsPhoto>, modifier: Modifier = Modifier) {
     LazyVerticalGrid(

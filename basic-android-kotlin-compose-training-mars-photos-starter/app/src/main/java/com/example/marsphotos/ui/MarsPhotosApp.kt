@@ -33,15 +33,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import com.example.marsphotos.R
-import com.example.marsphotos.di.GetPhotosRepository
-import com.example.marsphotos.di.GetPhotosUseCase
-import com.example.marsphotos.di.retrofitPhotosService
 import com.example.marsphotos.ui.screens.HomeScreen
 import com.example.marsphotos.ui.screens.MarsViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun MarsPhotosApp() {
-    val marsViewModel = MarsViewModel(GetPhotosUseCase(GetPhotosRepository(retrofitPhotosService)))
+    // val marsViewModel = MarsViewModel(GetPhotosUseCase(GetPhotosRepository(retrofitPhotosService)))
+    val marsViewModel: MarsViewModel = koinViewModel()
 
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
     Scaffold(
@@ -55,12 +54,14 @@ fun MarsPhotosApp() {
         ) {
             // val tayViewModel: TayViewModel = viewModel()
             HomeScreen(
-                marsUiState = marsViewModel.marsUiState,
+                marsUiState = marsViewModel.marsUiState
                 //tayUiState = tayViewModel.tayUiState
             )
         }
     }
 }
+
+
 
 @Composable
 fun MarsTopAppBar(scrollBehavior: TopAppBarScrollBehavior, modifier: Modifier = Modifier) {
