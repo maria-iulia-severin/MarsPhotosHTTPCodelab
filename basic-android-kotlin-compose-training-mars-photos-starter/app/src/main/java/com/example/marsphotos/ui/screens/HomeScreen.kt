@@ -42,35 +42,16 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.marsphotos.R
 import com.example.marsphotos.network.MarsPhoto
-import com.example.marsphotos.network.TayAlbum
 
 @Composable
 fun HomeScreen(
     marsUiState: MarsUiState,
-    //tayUiState: TayUiState,
     modifier: Modifier = Modifier
 ) {
-//    when (tayUiState) {
-//        is TayUiState.Loading -> LoadingScreen(modifier = modifier.fillMaxSize())
-//        is TayUiState.Success -> TayAlbumShow(tayUiState.albums, modifier)
-//        is TayUiState.Error -> ErrorScreen(modifier = modifier.fillMaxSize())
-//
-//    }
     when (marsUiState) {
         is MarsUiState.Loading -> LoadingScreen(modifier = modifier.fillMaxSize())
         is MarsUiState.Success -> PhotosGridScreen(marsUiState.photos, modifier)
         is MarsUiState.Error -> ErrorScreen(modifier = modifier.fillMaxSize())
-    }
-}
-
-@Composable
-fun TayAlbumShow(album: TayAlbum, modifier: Modifier = Modifier) {
-    Card(
-        modifier = modifier,
-        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
-    ) {
-        Text(text = album.title)
-
     }
 }
 
@@ -111,7 +92,10 @@ fun MarsPhotoCard(photo: MarsPhoto, modifier: Modifier = Modifier) {
             contentDescription = stringResource(R.string.mars_photo),
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxWidth()
-        ) } }
+        )
+    }
+}
+
 @Composable
 fun PhotosGridScreen(photos: List<MarsPhoto>, modifier: Modifier = Modifier) {
     LazyVerticalGrid(

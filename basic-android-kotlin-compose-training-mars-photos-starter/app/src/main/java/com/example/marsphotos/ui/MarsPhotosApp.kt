@@ -52,16 +52,14 @@ fun MarsPhotosApp() {
                 .fillMaxSize()
                 .padding(it)
         ) {
-            // val tayViewModel: TayViewModel = viewModel()
+
             HomeScreen(
                 marsUiState = marsViewModel.marsUiState
-                //tayUiState = tayViewModel.tayUiState
+
             )
         }
     }
 }
-
-
 
 @Composable
 fun MarsTopAppBar(scrollBehavior: TopAppBarScrollBehavior, modifier: Modifier = Modifier) {

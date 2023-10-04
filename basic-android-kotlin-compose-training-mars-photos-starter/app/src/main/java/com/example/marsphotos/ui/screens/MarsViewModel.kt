@@ -53,7 +53,6 @@ class MarsViewModel(
         viewModelScope.launch {
             marsUiState = try {
                 val photos = getPhotosUseCase.getPhotos()
-
                 MarsUiState.Success(photos)
             } catch (e: IOException) {
                 MarsUiState.Error
