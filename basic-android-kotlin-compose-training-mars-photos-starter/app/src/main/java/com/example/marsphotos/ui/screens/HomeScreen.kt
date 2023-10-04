@@ -46,21 +46,21 @@ import com.example.marsphotos.network.TayAlbum
 
 @Composable
 fun HomeScreen(
-    // marsUiState: MarsUiState,
-    tayUiState: TayUiState,
+    marsUiState: MarsUiState,
+    //tayUiState: TayUiState,
     modifier: Modifier = Modifier
 ) {
-    when (tayUiState) {
-        is TayUiState.Loading -> LoadingScreen(modifier = modifier.fillMaxSize())
-        is TayUiState.Success -> TayAlbumShow(tayUiState.albums, modifier)
-        is TayUiState.Error -> ErrorScreen(modifier = modifier.fillMaxSize())
-
-    }
-//    when (marsUiState) {
-//        is MarsUiState.Loading -> LoadingScreen(modifier = modifier.fillMaxSize())
-//        is MarsUiState.Success -> PhotosGridScreen(marsUiState.photos, modifier)
-//        is MarsUiState.Error -> ErrorScreen(modifier = modifier.fillMaxSize())
+//    when (tayUiState) {
+//        is TayUiState.Loading -> LoadingScreen(modifier = modifier.fillMaxSize())
+//        is TayUiState.Success -> TayAlbumShow(tayUiState.albums, modifier)
+//        is TayUiState.Error -> ErrorScreen(modifier = modifier.fillMaxSize())
+//
 //    }
+    when (marsUiState) {
+        is MarsUiState.Loading -> LoadingScreen(modifier = modifier.fillMaxSize())
+        is MarsUiState.Success -> PhotosGridScreen(marsUiState.photos, modifier)
+        is MarsUiState.Error -> ErrorScreen(modifier = modifier.fillMaxSize())
+    }
 }
 
 @Composable

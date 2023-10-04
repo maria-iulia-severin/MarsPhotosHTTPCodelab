@@ -51,10 +51,12 @@ fun MarsPhotosApp() {
                 .padding(it)
         ) {
             val marsViewModel: MarsViewModel = viewModel()
-            val tayViewModel: TayViewModel = viewModel()
+           // val tayViewModel: TayViewModel = viewModel()
             HomeScreen(
-               // marsUiState = marsViewModel.marsUiState)
-                tayUiState = tayViewModel.tayUiState)
+                 marsUiState = marsViewModel.marsUiState
+            //tayUiState = tayViewModel.tayUiState
+        )
+
 
         }
     }
