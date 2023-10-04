@@ -20,7 +20,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.marsphotos.network.MarsApi
+import com.example.marsphotos.di.GetPhotosUseCase
 import com.example.marsphotos.network.MarsPhoto
 import kotlinx.coroutines.launch
 import java.io.IOException
@@ -31,7 +31,9 @@ sealed interface MarsUiState {
     object Loading : MarsUiState
 }
 
-class MarsViewModel : ViewModel() {
+class MarsViewModel(
+    private val getPhotosUseCase: GetPhotosUseCase
+) : ViewModel() {
     /** The mutable State that stores the status of the most recent request */
     var marsUiState: MarsUiState by mutableStateOf(MarsUiState.Loading)
         private set
@@ -50,7 +52,9 @@ class MarsViewModel : ViewModel() {
     private fun getMarsPhotos() {
         viewModelScope.launch {
             marsUiState = try {
-                MarsUiState.Success(MarsApi.retrofitService.getPhotos())
+                val photos = getPhotosUseCase.getPhotos()
+
+                MarsUiState.Success(photos)
             } catch (e: IOException) {
                 MarsUiState.Error
             }

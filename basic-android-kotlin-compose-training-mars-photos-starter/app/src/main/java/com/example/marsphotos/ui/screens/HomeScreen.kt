@@ -105,7 +105,7 @@ fun MarsPhotoCard(photo: MarsPhoto, modifier: Modifier = Modifier) {
     ) {
         AsyncImage(
             model = ImageRequest.Builder(context = LocalContext.current)
-                .data(photo.imgSrc)
+                .data(photo.imageUrl)
                 .crossfade(true)
                 .build(),
             contentDescription = stringResource(R.string.mars_photo),
