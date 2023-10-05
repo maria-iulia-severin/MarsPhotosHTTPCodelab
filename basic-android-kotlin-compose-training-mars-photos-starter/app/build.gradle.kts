@@ -24,7 +24,7 @@ plugins {
 
 android {
     namespace = "com.example.marsphotos"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.marsphotos"
@@ -68,6 +68,7 @@ android {
 }
 
 dependencies {
+    implementation("androidx.navigation:navigation-compose:2.7.4")
     // Koin for Android
     implementation("io.insert-koin:koin-androidx-compose:3.5.0")
     implementation("io.coil-kt:coil-compose:2.4.0")

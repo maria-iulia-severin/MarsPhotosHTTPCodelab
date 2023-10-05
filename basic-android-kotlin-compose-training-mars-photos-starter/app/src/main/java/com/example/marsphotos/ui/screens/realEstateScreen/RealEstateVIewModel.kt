@@ -1,0 +1,39 @@
+package com.example.marsphotos.ui.screens.realEstateScreen
+
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.marsphotos.di.realEstate.GetRealEstateUseCase
+import com.example.marsphotos.network.RealEstate
+import kotlinx.coroutines.launch
+import java.io.IOException
+
+sealed interface RealEstateUiState {
+    data class Success(val realEstates: List<RealEstate>) : RealEstateUiState
+    object Error : RealEstateUiState
+    object Loading : RealEstateUiState
+}
+
+class RealEstateVIewModel(
+    private val getRealEstateUseCase: GetRealEstateUseCase
+) : ViewModel() {
+    var realEstateUiState: RealEstateUiState by mutableStateOf(RealEstateUiState.Loading)
+        private set
+
+    init {
+        getRealEstatePrice()
+    }
+
+    private fun getRealEstatePrice() {
+        viewModelScope.launch {
+            realEstateUiState = try {
+                val realEstates = getRealEstateUseCase.getRealEstate()
+                RealEstateUiState.Success(realEstates)
+            } catch (e: IOException) {
+                RealEstateUiState.Error
+            }
+        }
+    }
+}

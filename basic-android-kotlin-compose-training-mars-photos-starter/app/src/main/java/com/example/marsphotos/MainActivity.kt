@@ -25,7 +25,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.core.view.WindowCompat
 import com.example.marsphotos.di.appModule
-import com.example.marsphotos.ui.MarsPhotosApp
+import com.example.marsphotos.ui.MarsApp
 import com.example.marsphotos.ui.theme.MarsPhotosTheme
 import org.koin.core.context.startKoin
 
@@ -45,7 +45,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    MarsPhotosApp()
+                    MarsApp()
                 }
             }
         }
