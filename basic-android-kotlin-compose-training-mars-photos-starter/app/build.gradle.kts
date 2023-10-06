@@ -68,6 +68,10 @@ android {
 }
 
 dependencies {
+    implementation("androidx.compose.material:material:1.5.0")
+    implementation("androidx.navigation:navigation-compose:2.4.0-alpha06")
+    implementation("androidx.navigation:navigation-common-ktx:2.7.4")
+    implementation("androidx.navigation:navigation-runtime-ktx:2.7.4")
     implementation("androidx.navigation:navigation-compose:2.7.4")
     // Koin for Android
     implementation("io.insert-koin:koin-androidx-compose:3.5.0")
