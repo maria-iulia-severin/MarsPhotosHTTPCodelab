@@ -9,7 +9,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun InfoScreen() {
+//fun InfoScreen(price: Int?, imageUrl: String?) {
+fun InfoScreen(imageUrl: String?) {
+//fun InfoScreen() {
     Box(
         modifier = Modifier.padding(8.dp),
         contentAlignment = Alignment.Center

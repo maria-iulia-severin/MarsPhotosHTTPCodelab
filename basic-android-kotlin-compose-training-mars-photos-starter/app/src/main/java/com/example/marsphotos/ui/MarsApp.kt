@@ -34,30 +34,32 @@ fun MarsApp() {
                     )
                 }
             )
-        },
-        bottomBar = {
-            BottomNavigationBar(
-                items = listOf(
-                    BottomNavItem(
-                        name = Routes.MARS.title,
-                        route = Routes.MARS.route,
-                        icon = Icons.Default.ArrowBack
-                    ),
-                    BottomNavItem(
-                        name = Routes.REALESTATE.title,
-                        route = Routes.REALESTATE.route,
-                        icon = Icons.Default.ArrowForward
-                    )
-                ),
-                navController = navController,
-                onItemClick = {
-                    navController.navigate(it.route)
-                })
-        }) { paddingValues ->
+        }
+//        ,
+//        bottomBar = {
+//            BottomNavigationBar(
+//                items = listOf(
+//                    BottomNavItem(
+//                        name = Routes.MARS.title,
+//                        route = Routes.MARS.route,
+//                        icon = Icons.Default.ArrowBack
+//                    ),
+//                    BottomNavItem(
+//                        name = Routes.REALESTATE.title,
+//                        route = Routes.REALESTATE.route,
+//                        icon = Icons.Default.ArrowForward
+//                    )
+//                ),
+//                navController = navController,
+//                onItemClick = {
+//                    navController.navigate(it.route)
+//                })
+//        }
+    )
+    { paddingValues ->
         NavigationMars(navController = navController, paddingValues)
     }
 }
-
 
 
 

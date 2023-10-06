@@ -28,7 +28,16 @@ fun RealEstateCard(
     navController: NavHostController
 ) {
     Card(
-        onClick = { navController.navigate(Routes.INFOSCREEN.route) },
+        onClick = {
+            //navController.navigate(Routes.INFOSCREEN.route.
+            navController.navigate(Routes.INFOSCREEN.withArgs(realEstate.id)
+
+//                    .withArgs(
+//                    realEstate.price.toString(),
+//                    realEstate.imageUrl
+//                )
+            )
+        },
         shape = RoundedCornerShape(8.dp),
         modifier = modifier.padding(10.dp, 5.dp, 10.dp, 10.dp),
         elevation = CardDefaults.cardElevation(
