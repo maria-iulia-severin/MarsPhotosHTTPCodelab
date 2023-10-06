@@ -15,10 +15,7 @@ fun RealEstateScreen(
 ) {
     when (realEstateUiState) {
         is RealEstateUiState.Loading -> LoadingScreen(modifier = modifier.fillMaxSize())
-        is RealEstateUiState.Success -> RealEstateColumnScreen(
-            realEstateUiState.realEstates,
-            modifier
-        )
+        is RealEstateUiState.Success -> RealEstateColumnScreen(realEstateUiState.realEstates, modifier)
         is RealEstateUiState.Error -> ErrorScreen(modifier = modifier.fillMaxSize())
     }
 }

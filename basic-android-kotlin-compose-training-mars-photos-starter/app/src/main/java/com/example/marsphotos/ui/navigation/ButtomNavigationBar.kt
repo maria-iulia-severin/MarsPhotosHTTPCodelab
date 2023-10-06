@@ -1,6 +1,7 @@
-package com.example.marsphotos.ui
+package com.example.marsphotos.ui.navigation
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
@@ -25,7 +26,7 @@ fun BottomNavigationBar(
 ) {
 
     val backStackEntry = navController.currentBackStackEntryAsState()
-    BottomNavigation(modifier = modifier, backgroundColor = Color.White, elevation = 5.dp) {
+    BottomNavigation(modifier = modifier.padding(vertical = 13.dp), backgroundColor = Color.White, elevation = 5.dp) {
         items.forEach { item ->
             val selected = item.route == backStackEntry.value?.destination?.route
             BottomNavigationItem(selected = selected,

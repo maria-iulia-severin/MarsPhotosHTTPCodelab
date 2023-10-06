@@ -13,6 +13,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.compose.rememberNavController
+import com.example.marsphotos.ui.navigation.BottomNavItem
+import com.example.marsphotos.ui.navigation.BottomNavigationBar
+import com.example.marsphotos.ui.navigation.NavigationMars
+import com.example.marsphotos.ui.navigation.Routes
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

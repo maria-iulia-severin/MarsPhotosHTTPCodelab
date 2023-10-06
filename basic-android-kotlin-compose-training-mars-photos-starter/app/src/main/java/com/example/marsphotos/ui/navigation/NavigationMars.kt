@@ -1,4 +1,4 @@
-package com.example.marsphotos.ui
+package com.example.marsphotos.ui.navigation
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
