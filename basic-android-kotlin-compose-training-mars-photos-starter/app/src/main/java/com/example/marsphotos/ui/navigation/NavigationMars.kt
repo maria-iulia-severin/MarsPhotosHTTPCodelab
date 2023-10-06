@@ -7,6 +7,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.marsphotos.ui.screens.InfoScreen
 import com.example.marsphotos.ui.screens.marsPhotosScreen.MarsPhotosScreen
 import com.example.marsphotos.ui.screens.marsPhotosScreen.MarsViewModel
 import com.example.marsphotos.ui.screens.realEstateScreen.RealEstateScreen
@@ -19,7 +20,17 @@ fun NavigationMars(navController: NavHostController, paddingValues: PaddingValue
     val marsViewModel: MarsViewModel = koinViewModel()
     val realEstateViewModel: RealEstateVIewModel = koinViewModel()
 
-    NavHost(navController = navController, startDestination = Routes.REALESTATE.route, modifier = Modifier.padding(paddingValues)) {
+    NavHost(
+        navController = navController,
+        startDestination = Routes.REALESTATE.route,
+        modifier = Modifier.padding(paddingValues)
+    ) {
         composable(Routes.MARS.route) { MarsPhotosScreen(marsUiState = marsViewModel.marsUiState) }
-        composable(Routes.REALESTATE.route) { RealEstateScreen(realEstateUiState = realEstateViewModel.realEstateUiState) } }
+        composable(Routes.REALESTATE.route) { RealEstateScreen(realEstateUiState = realEstateViewModel.realEstateUiState, navController = navController) }
+
+
+
+
+        composable(Routes.INFOSCREEN.route){ InfoScreen()}
     }
+}
