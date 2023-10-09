@@ -10,7 +10,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.example.marsphotos.ui.screens.InfoScreen
-import com.example.marsphotos.ui.screens.marsPhotosScreen.MarsPhotosScreen
 import com.example.marsphotos.ui.screens.marsPhotosScreen.MarsViewModel
 import com.example.marsphotos.ui.screens.realEstateScreen.RealEstateScreen
 import com.example.marsphotos.ui.screens.realEstateScreen.RealEstateVIewModel
@@ -27,7 +26,7 @@ fun NavigationMars(navController: NavHostController, paddingValues: PaddingValue
         startDestination = Routes.REALESTATE.route,
         modifier = Modifier.padding(paddingValues)
     ) {
-       // composable(route = Routes.MARS.route) { MarsPhotosScreen(marsUiState = marsViewModel.marsUiState) }
+        // composable(route = Routes.MARS.route) { MarsPhotosScreen(marsUiState = marsViewModel.marsUiState) }
         composable(route = Routes.REALESTATE.route) {
             RealEstateScreen(
                 realEstateUiState = realEstateViewModel.realEstateUiState,
@@ -38,12 +37,12 @@ fun NavigationMars(navController: NavHostController, paddingValues: PaddingValue
 
         //telling infoscreen to expect arguments too
         composable(
-           // route = Routes.INFOSCREEN.route + "/{price}/{imageUrl}",
-            route = Routes.INFOSCREEN.route + "/{imageUrl}",
+            // route = Routes.INFOSCREEN.route + "/{price}/{imageUrl}",
+            route = Routes.INFOSCREEN.route + "/{imageUrl}/{price}",
             arguments = listOf(
-//                navArgument("price") {
-//                    type = NavType.IntType
-//                },
+                navArgument("price") {
+                    type = NavType.IntType
+                },
                 navArgument("imageUrl") {
                     type = NavType.StringType
                 }
@@ -51,7 +50,8 @@ fun NavigationMars(navController: NavHostController, paddingValues: PaddingValue
         ) { args ->
             InfoScreen(
                 //price = args.arguments?.getInt("price"),
-                imageUrl = args.arguments?.getString("imageUrl")
+                imageUrl = args.arguments?.getString("imageUrl"),
+                price = args.arguments?.getInt("price")
             )
         }
 

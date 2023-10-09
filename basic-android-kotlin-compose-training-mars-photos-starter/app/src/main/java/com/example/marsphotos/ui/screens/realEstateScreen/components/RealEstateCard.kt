@@ -19,6 +19,8 @@ import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.example.marsphotos.network.RealEstate
 import com.example.marsphotos.ui.navigation.Routes
+import java.net.URLEncoder
+import java.nio.charset.StandardCharsets
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -30,13 +32,10 @@ fun RealEstateCard(
     Card(
         onClick = {
             //navController.navigate(Routes.INFOSCREEN.route.
-            navController.navigate(Routes.INFOSCREEN.withArgs(realEstate.id)
-
-//                    .withArgs(
-//                    realEstate.price.toString(),
-//                    realEstate.imageUrl
-//                )
-            )
+            val encImageUrl =
+                URLEncoder.encode(realEstate.imageUrl, StandardCharsets.UTF_8.toString())
+            val route = Routes.INFOSCREEN.route + "/$encImageUrl/${realEstate.price}"
+            navController.navigate(route)
         },
         shape = RoundedCornerShape(8.dp),
         modifier = modifier.padding(10.dp, 5.dp, 10.dp, 10.dp),
