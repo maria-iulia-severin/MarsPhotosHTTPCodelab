@@ -19,10 +19,7 @@ val appModule = module {
     }
     single { GetMarsPhotosUseCase(get()) }
     viewModel { MarsViewModel(get()) }
-    // din MArsPhotoAPp -> val marsViewModel = MarsViewModel(GetMarsPhotosUseCase(GetMarsPhotosRepository(retrofitPhotosService)))
-    //primul single imi reprezinta type ul pt retrofit.create si ce vreau eu sa fac
 
-    //Real Estate
     single<GetRealEstateDataSource> { retrofit.create(GetRealEstateDataSource::class.java) }
     single { GetRealEstateRepository(get()) }
     single { GetRealEstateUseCase(get()) }

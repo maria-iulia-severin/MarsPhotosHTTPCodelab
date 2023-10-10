@@ -31,7 +31,6 @@ fun RealEstateCard(
 ) {
     Card(
         onClick = {
-            //navController.navigate(Routes.INFOSCREEN.route.
             val encImageUrl =
                 URLEncoder.encode(realEstate.imageUrl, StandardCharsets.UTF_8.toString())
             val route = Routes.INFOSCREEN.route + "/$encImageUrl/${realEstate.price}"
@@ -58,35 +57,5 @@ fun RealEstateCard(
                 modifier = Modifier.padding(horizontal = 150.dp),
             )
         }
-//    Card(
-//        shape = RoundedCornerShape(8.dp),
-//        modifier = modifier.padding(10.dp, 5.dp, 10.dp, 10.dp),
-//        elevation = CardDefaults.cardElevation(
-//            defaultElevation = 10.dp,
-//        )
-//    ) {
-//        Column(modifier = Modifier.background(color = Color.White)) {
-//            AsyncImage(
-//                model = realEstate.imageUrl,
-//                contentDescription = null,
-//                contentScale = ContentScale.Crop,
-//                modifier = Modifier
-//                    .height(150.dp)
-//                    .fillMaxWidth()
-//            )
-//            Text(
-//                text = realEstate.price.toString(),
-//                color = Color.Blue,
-//                modifier = Modifier
-//                    .padding(horizontal = 150.dp),
-//            )
-//        }
     }
 }
-
-//@Preview(showBackground = true)
-//@Composable
-//fun RealEstateCardPreview() {
-//    RealEstateCard(
-//        realEstate = RealEstate(price = 232, id="dfhjd", type = "sdss", imageUrl = "dss"))
-//}
