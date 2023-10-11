@@ -37,5 +37,6 @@ fun RealEstateColumnScreen(
             }
         }
     }
-
 }
+
+
