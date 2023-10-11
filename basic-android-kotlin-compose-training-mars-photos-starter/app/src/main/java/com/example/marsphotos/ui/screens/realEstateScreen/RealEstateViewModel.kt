@@ -22,22 +22,17 @@ class RealEstateViewModel(
 ) : ViewModel() {
     var realEstateUiState: RealEstateUiState by mutableStateOf(RealEstateUiState.Loading)
         private set
-
-
+    private var selectedPosition: Int by mutableIntStateOf(-1)
 
     init {
         getRealEstatePrice()
     }
 
-    var selectedPosition: Int by mutableIntStateOf(-1)
-
     fun savePosition(index: Int) {
         selectedPosition = index
     }
 
-    fun getSavePosition(): Int {
-        return selectedPosition
-    }
+    fun getSavedPosition() = selectedPosition
 
     private fun getRealEstatePrice() {
         viewModelScope.launch {

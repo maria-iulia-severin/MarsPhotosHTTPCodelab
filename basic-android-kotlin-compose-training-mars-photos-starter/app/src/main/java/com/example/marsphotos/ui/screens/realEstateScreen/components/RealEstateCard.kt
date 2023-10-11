@@ -38,6 +38,7 @@ fun RealEstateCard(
             val encImageUrl =
                 URLEncoder.encode(realEstate.imageUrl, StandardCharsets.UTF_8.toString())
             val route = Routes.INFOSCREEN.route + "/$encImageUrl/${index}"
+
             viewModel.savePosition(index)
             navController.navigate(route)
         },

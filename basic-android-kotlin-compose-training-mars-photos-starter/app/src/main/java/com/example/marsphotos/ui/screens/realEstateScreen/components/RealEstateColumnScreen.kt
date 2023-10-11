@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -24,10 +23,10 @@ fun RealEstateColumnScreen(
     Column {
         LazyColumn(
         ) {
-            itemsIndexed(items = realEstates) {index, realEstate ->
+            itemsIndexed(items = realEstates) { index, realEstate ->
                 RealEstateCard(
-                    index,
-                    realEstate,
+                    index = index,
+                    realEstate = realEstate,
                     navController = navController,
                     modifier = modifier
                         .padding(4.dp)

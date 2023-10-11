@@ -26,13 +26,21 @@ fun NavigationMars(navController: NavHostController, paddingValues: PaddingValue
         startDestination = Routes.REALESTATE.route,
         modifier = Modifier.padding(paddingValues)
     ) {
-        composable(route = Routes.MARS.route) { MarsPhotosScreen(marsUiState = marsViewModel.marsUiState) }
-        composable(route = Routes.REALESTATE.route) {
+        composable(
+            route = Routes.MARS.route
+        ) {
+            MarsPhotosScreen(
+                marsUiState = marsViewModel.marsUiState
+            )
+        }
+        composable(
+            route = Routes.REALESTATE.route
+        ) {
             RealEstateScreen(
                 realEstateUiState = realEstateViewModel.realEstateUiState,
                 navController = navController,
                 viewModel = realEstateViewModel,
-                selectedPosition = realEstateViewModel.getSavePosition()
+                selectedPosition = realEstateViewModel.getSavedPosition()
             )
         }
         composable(
