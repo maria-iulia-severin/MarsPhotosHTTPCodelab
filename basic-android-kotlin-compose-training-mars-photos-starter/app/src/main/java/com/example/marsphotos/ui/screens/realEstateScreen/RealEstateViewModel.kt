@@ -23,11 +23,10 @@ class RealEstateViewModel(
     var realEstateUiState: RealEstateUiState by mutableStateOf(RealEstateUiState.Loading)
         private set
 
-
-
     init {
         getRealEstatePrice()
     }
+
 
     var selectedPosition: Int by mutableIntStateOf(-1)
 
