@@ -1,7 +1,6 @@
 package com.example.marsphotos.ui.screens.realEstateScreen
 
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
@@ -23,20 +22,8 @@ class RealEstateViewModel(
     var realEstateUiState: RealEstateUiState by mutableStateOf(RealEstateUiState.Loading)
         private set
 
-
-
     init {
         getRealEstatePrice()
-    }
-
-    var selectedPosition: Int by mutableIntStateOf(-1)
-
-    fun savePosition(index: Int) {
-        selectedPosition = index
-    }
-
-    fun getSavePosition(): Int {
-        return selectedPosition
     }
 
     private fun getRealEstatePrice() {

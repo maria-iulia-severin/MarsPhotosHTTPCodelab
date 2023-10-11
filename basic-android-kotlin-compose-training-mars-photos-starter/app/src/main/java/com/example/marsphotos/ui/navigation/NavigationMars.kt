@@ -30,9 +30,7 @@ fun NavigationMars(navController: NavHostController, paddingValues: PaddingValue
         composable(route = Routes.REALESTATE.route) {
             RealEstateScreen(
                 realEstateUiState = realEstateViewModel.realEstateUiState,
-                navController = navController,
-                viewModel = realEstateViewModel,
-                selectedPosition = realEstateViewModel.getSavePosition()
+                navController = navController
             )
         }
         composable(

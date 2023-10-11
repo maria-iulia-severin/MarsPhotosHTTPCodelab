@@ -37,7 +37,5 @@ fun InfoScreen(imageUrl: String?, price: Int?) {
                     .fillMaxWidth()
             )
         }
-
-//commit
     }
 }
