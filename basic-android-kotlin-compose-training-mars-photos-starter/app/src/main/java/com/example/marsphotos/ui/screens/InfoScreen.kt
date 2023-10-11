@@ -38,6 +38,6 @@ fun InfoScreen(imageUrl: String?, price: Int?) {
             )
         }
 
-//test
+//teswewwwt
     }
 }
