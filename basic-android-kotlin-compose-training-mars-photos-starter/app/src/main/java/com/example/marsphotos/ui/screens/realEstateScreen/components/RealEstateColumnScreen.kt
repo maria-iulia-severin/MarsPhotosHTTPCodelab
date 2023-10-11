@@ -10,28 +10,33 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.marsphotos.network.RealEstate
+import com.example.marsphotos.ui.screens.realEstateScreen.RealEstateViewModel
 
 @Composable
 fun RealEstateColumnScreen(
     realEstates: List<RealEstate>,
     modifier: Modifier = Modifier,
     navController: NavHostController,
+    viewModel: RealEstateViewModel,
+    selectedPosition: Int
 ) {
     Column {
         LazyColumn(
         ) {
-            itemsIndexed(items = realEstates) {index, realEstate ->
+            itemsIndexed(items = realEstates) { index, realEstate ->
                 RealEstateCard(
-                    index,
-                    realEstate,
+                    index = index,
+                    realEstate = realEstate,
                     navController = navController,
                     modifier = modifier
                         .padding(4.dp)
-                        .fillMaxWidth()
+                        .fillMaxWidth(),
+                    viewModel = viewModel,
+                    selectedPosition = selectedPosition
                 )
             }
         }
     }
-
 }
+
 

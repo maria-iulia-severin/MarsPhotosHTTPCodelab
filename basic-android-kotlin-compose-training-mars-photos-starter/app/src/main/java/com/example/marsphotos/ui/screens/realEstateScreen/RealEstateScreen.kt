@@ -13,12 +13,25 @@ import com.example.marsphotos.ui.screens.realEstateScreen.components.RealEstateC
 fun RealEstateScreen(
     realEstateUiState: RealEstateUiState,
     modifier: Modifier = Modifier,
-    navController: NavHostController
+    navController: NavHostController,
+    viewModel: RealEstateViewModel,
+    selectedPosition: Int
 ) {
     when (realEstateUiState) {
-        is RealEstateUiState.Loading -> LoadingScreen(modifier = modifier.fillMaxSize())
-        is RealEstateUiState.Success -> RealEstateColumnScreen(realEstateUiState.realEstates, modifier, navController = navController)
-        is RealEstateUiState.Error -> ErrorScreen(modifier = modifier.fillMaxSize())
+        is RealEstateUiState.Loading -> LoadingScreen(
+            modifier = modifier.fillMaxSize()
+        )
+
+        is RealEstateUiState.Success -> RealEstateColumnScreen(
+            realEstates = realEstateUiState.realEstates,
+            modifier = modifier,
+            navController = navController,
+            viewModel = viewModel,
+            selectedPosition = selectedPosition
+        )
+
+        is RealEstateUiState.Error -> ErrorScreen(
+            modifier = modifier.fillMaxSize()
+        )
     }
 }
-
