@@ -8,7 +8,7 @@ import com.example.marsphotos.di.realEstate.GetRealEstateRepository
 import com.example.marsphotos.di.realEstate.GetRealEstateUseCase
 import com.example.marsphotos.network.retrofit
 import com.example.marsphotos.ui.screens.marsPhotosScreen.MarsViewModel
-import com.example.marsphotos.ui.screens.realEstateScreen.RealEstateVIewModel
+import com.example.marsphotos.ui.screens.realEstateScreen.RealEstateViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -23,6 +23,6 @@ val appModule = module {
     single<GetRealEstateDataSource> { retrofit.create(GetRealEstateDataSource::class.java) }
     single { GetRealEstateRepository(get()) }
     single { GetRealEstateUseCase(get()) }
-    viewModel { RealEstateVIewModel(get()) }
+    viewModel { RealEstateViewModel(get()) }
 
 }

@@ -13,13 +13,13 @@ import com.example.marsphotos.ui.screens.InfoScreen
 import com.example.marsphotos.ui.screens.marsPhotosScreen.MarsPhotosScreen
 import com.example.marsphotos.ui.screens.marsPhotosScreen.MarsViewModel
 import com.example.marsphotos.ui.screens.realEstateScreen.RealEstateScreen
-import com.example.marsphotos.ui.screens.realEstateScreen.RealEstateVIewModel
+import com.example.marsphotos.ui.screens.realEstateScreen.RealEstateViewModel
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun NavigationMars(navController: NavHostController, paddingValues: PaddingValues) {
     val marsViewModel: MarsViewModel = koinViewModel()
-    val realEstateViewModel: RealEstateVIewModel = koinViewModel()
+    val realEstateViewModel: RealEstateViewModel = koinViewModel()
 
     NavHost(
         navController = navController,
@@ -30,7 +30,9 @@ fun NavigationMars(navController: NavHostController, paddingValues: PaddingValue
         composable(route = Routes.REALESTATE.route) {
             RealEstateScreen(
                 realEstateUiState = realEstateViewModel.realEstateUiState,
-                navController = navController
+                navController = navController,
+                viewModel = realEstateViewModel,
+                selectedPosition = realEstateViewModel.getSavePosition()
             )
         }
         composable(
