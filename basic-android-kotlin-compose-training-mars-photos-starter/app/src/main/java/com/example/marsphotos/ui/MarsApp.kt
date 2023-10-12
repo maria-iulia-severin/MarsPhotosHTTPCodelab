@@ -34,11 +34,3 @@ fun MarsApp() {
         NavigationMars(navController = navController, paddingValues)
     }
 }
-
-
-
-
-
-
-
-
