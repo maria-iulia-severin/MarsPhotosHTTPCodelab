@@ -1,8 +1,5 @@
 package com.example.marsphotos.ui.screens.realEstateScreen
 
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.marsphotos.di.realEstate.GetRealEstateUseCase
@@ -12,7 +9,6 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import java.io.IOException
-
 
 class RealEstateViewModel(
     private val getRealEstateUseCase: GetRealEstateUseCase
@@ -37,7 +33,10 @@ class RealEstateViewModel(
         viewModelScope.launch {
             try {
                 _realEstateUiState.update { currentState ->
-                    currentState.copy(realEstates = getRealEstateUseCase.getRealEstate(), isLoading = false)
+                    currentState.copy(
+                        realEstates = getRealEstateUseCase.getRealEstate(),
+                        isLoading = false
+                    )
                 }
             } catch (e: IOException) {
                 _realEstateUiState.update { currentState ->
