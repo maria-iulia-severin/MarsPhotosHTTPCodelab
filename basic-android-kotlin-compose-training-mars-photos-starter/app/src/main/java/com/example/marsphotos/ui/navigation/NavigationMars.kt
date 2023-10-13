@@ -19,7 +19,6 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun NavigationMars(navController: NavHostController, paddingValues: PaddingValues) {
     val marsViewModel: MarsViewModel = koinViewModel()
-    val realEstateViewModel: RealEstateViewModel = koinViewModel()
 
     NavHost(
         navController = navController,
@@ -37,10 +36,7 @@ fun NavigationMars(navController: NavHostController, paddingValues: PaddingValue
             route = Routes.REALESTATE.route
         ) {
             RealEstateScreen(
-                realEstateUiState = realEstateViewModel.realEstateUiState,
-                navController = navController,
-                viewModel = realEstateViewModel,
-                selectedPosition = realEstateViewModel.getSavedPosition()
+                navController = navController
             )
         }
         composable(

@@ -2,45 +2,47 @@ package com.example.marsphotos.ui.screens.realEstateScreen
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.marsphotos.di.realEstate.GetRealEstateUseCase
-import com.example.marsphotos.network.RealEstate
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import java.io.IOException
 
-sealed interface RealEstateUiState {
-    data class Success(val realEstates: List<RealEstate>) : RealEstateUiState
-    object Error : RealEstateUiState
-    object Loading : RealEstateUiState
-}
 
 class RealEstateViewModel(
     private val getRealEstateUseCase: GetRealEstateUseCase
 ) : ViewModel() {
-    var realEstateUiState: RealEstateUiState by mutableStateOf(RealEstateUiState.Loading)
-        private set
-    private var selectedPosition: Int by mutableIntStateOf(-1)
+
+    private var _realEstateUiState = MutableStateFlow(RealEstateUiState())
+    val realEstateUiState: StateFlow<RealEstateUiState> = _realEstateUiState.asStateFlow()
 
     init {
         getRealEstatePrice()
     }
 
     fun savePosition(index: Int) {
-        selectedPosition = index
+        _realEstateUiState.update { currentState ->
+            currentState.copy(selectedPosition = index)
+        }
     }
 
-    fun getSavedPosition() = selectedPosition
+    fun getSavedPosition() = _realEstateUiState.value.selectedPosition
 
     private fun getRealEstatePrice() {
         viewModelScope.launch {
-            realEstateUiState = try {
-                val realEstates = getRealEstateUseCase.getRealEstate()
-                RealEstateUiState.Success(realEstates)
+            try {
+                _realEstateUiState.update { currentState ->
+                    currentState.copy(realEstates = getRealEstateUseCase.getRealEstate(), isLoading = false)
+                }
             } catch (e: IOException) {
-                RealEstateUiState.Error
+                _realEstateUiState.update { currentState ->
+                    currentState.copy(isError = true, isLoading = false)
+                }
             }
         }
     }
